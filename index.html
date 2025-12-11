@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Protocol - Trustless Community Giving</title>
+    <meta name="description"
+        content="A transparent, community-driven platform where your contributions directly help people.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showTab('home')">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Charity Protocol</span>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="home">Home</button>
+                <button class="nav-tab" data-tab="about">About</button>
+                <button class="nav-tab" data-tab="proposals">Proposals</button>
+                <button class="nav-tab" data-tab="treasury">Treasury</button>
+                <div class="nav-dropdown">
+                    <button class="nav-tab nav-dropdown-toggle">
+                        More <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <button class="dropdown-item" data-tab="recipients">🏛️ Approved Charities</button>
+                        <button class="dropdown-item" data-tab="log">📜 Activity Log</button>
+                        <button class="dropdown-item" data-tab="community">💬 Community</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-secondary">Connect Wallet</button>
+                <button class="btn btn-primary">Contribute</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- HOME TAB -->
+        <div class="tab-content active" id="tab-home">
+            <section class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <div class="hero-badge"><span class="badge-dot"></span>100% Transparent • 0% Waste</div>
+                    <h1 class="hero-title">Voluntary Taxes That<br><span class="gradient-text">Actually Help
+                            People</span></h1>
+                    <p class="hero-subtitle">Contribute to a transparent pool. Vote on how it's spent. Watch goods ship
+                        directly to verified charities.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="showTab('treasury')">View Treasury →</button>
+                        <button class="btn btn-ghost btn-large" onclick="showTab('proposals')">See Proposals</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card" onclick="showTab('treasury')">
+                            <div class="stat-label">Treasury Balance</div>
+                            <div class="stat-value" id="treasury-balance">$127,450</div>
+                            <div class="stat-badge positive">+$2,340 today</div>
+                        </div>
+                        <div class="stat-card" onclick="showTab('community')">
+                            <div class="stat-label">Contributors</div>
+                            <div class="stat-value">1,247</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Goods Delivered</div>
+                            <div class="stat-value">$89,200</div>
+                            <div class="stat-badge positive">100% verified</div>
+                        </div>
+                        <div class="stat-card" onclick="showTab('proposals')">
+                            <div class="stat-label">Active Proposals</div>
+                            <div class="stat-value">7</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-badge">How It Works</span>
+                        <h2 class="section-title">From Contribution to Impact</h2>
+                    </div>
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <div class="step-icon">💰</div>
+                            <h3>Contribute</h3>
+                            <p>Add USDC to the pool. Voting power uses diminishing returns.</p>
+                        </div>
+                        <div class="step-connector">→</div>
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <div class="step-icon">📝</div>
+                            <h3>Propose</h3>
+                            <p>Anyone can propose specific goods for verified charities.</p>
+                        </div>
+                        <div class="step-connector">→</div>
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <div class="step-icon">🗳️</div>
+                            <h3>Vote</h3>
+                            <p>Quadratic voting. Rich can't dominate. Majority decides.</p>
+                        </div>
+                        <div class="step-connector">→</div>
+                        <div class="step-card">
+                            <div class="step-number">04</div>
+                            <div class="step-icon">📦</div>
+                            <h3>Auto-Execute</h3>
+                            <p>Smart contract → Amazon API → Goods shipped directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="voting-explainer">
+                <div class="container">
+                    <h2>Why Your Voice Matters (Even If You're Not Rich)</h2>
+                    <p>Quadratic voting prevents plutocracy. Votes = √(Contribution)</p>
+                    <div class="voting-example">
+                        <div>$100 → 10 votes</div>
+                        <div>$1,000 → 31 votes <small>(not 100!)</small></div>
+                        <div>$10,000 → 100 votes <small>(not 1,000!)</small></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT TAB -->
+        <div class="tab-content" id="tab-about">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>💚 About OpenCharity</h1>
+                    <p>Complete transparency. That's the whole idea.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>⚠️ This Is NOT An Investment</h2>
+                    <div class="about-card warning-card">
+                        <p>Let's be crystal clear:</p>
+                        <ul>
+                            <li>❌ This is NOT "buy a coin and watch it go up"</li>
+                            <li>❌ There is NO token to trade</li>
+                            <li>❌ You will NOT make money from this</li>
+                            <li>❌ This is NOT a get-rich-quick scheme</li>
+                        </ul>
+                        <p class="highlight">This is for people with kind hearts who want real change in the world.</p>
+                        <p>When you contribute, your money goes to help people. Period. That's the return on investment:
+                            knowing you helped.</p>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>🔐 The Money Lockbox</h2>
+                    <div class="about-card">
+                        <p><strong>No one can access the money. Not even the founder.</strong></p>
+                        <p>The treasury is controlled by a smart contract that ONLY allows:</p>
+                        <ul>
+                            <li>✅ Money IN from contributors</li>
+                            <li>✅ Money OUT to approved vendors (Amazon, Walmart, etc.)</li>
+                            <li>❌ NO withdrawals to personal wallets</li>
+                            <li>❌ NO founder access</li>
+                            <li>❌ NO emergency backdoors</li>
+                        </ul>
+                        <p>Once deployed, this is permanent. The code is law.</p>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>🗳️ Your Rights</h2>
+                    <div class="about-card">
+                        <p><strong>Once you contribute, you can ALWAYS vote.</strong></p>
+                        <p>Even if you get banned from chat or proposals for bad behavior, your voting rights are
+                            permanent. Your contribution earned you a voice forever.</p>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>📦 Trustless Ways We Help</h2>
+                    <p>We don't just send cash to charities. We use trusted vendors to ensure 100% of funds become real
+                        help:</p>
+                    <div class="allocation-grid">
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🛒</div>
+                            <h3>Product Delivery</h3>
+                            <p>Amazon, Walmart, Costco ship directly to charities. Tracked publicly.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🎁</div>
+                            <h3>Gift Cards</h3>
+                            <p>Digital gift cards for groceries, essentials sent directly to recipients.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">💊</div>
+                            <h3>Medical Bills</h3>
+                            <p>Pay hospital bills directly via payment portals. Proof of payment.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🎓</div>
+                            <h3>Scholarships</h3>
+                            <p>Pay tuition directly to verified schools. Student never touches money.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🏠</div>
+                            <h3>Rent/Utilities</h3>
+                            <p>Pay landlords/utilities directly via verified payment services.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🚌</div>
+                            <h3>Transit Passes</h3>
+                            <p>Purchase bus/transit passes via city transit APIs.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🐕</div>
+                            <h3>Pet Supplies</h3>
+                            <p>Chewy delivers pet food/supplies to animal shelters.</p>
+                        </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🍔</div>
+                            <h3>Meal Delivery</h3>
+                            <p>DoorDash/UberEats meals for homeless individuals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>⚠️ What Could Go Wrong</h2>
+                    <p>Complete transparency means telling you the risks too:</p>
+                    <div class="risks-grid">
+                        <div class="risk-card">
+                            <h4>Smart Contract Bug</h4>
+                            <p>Code vulnerability could be exploited. We mitigate with audits and bug bounties.</p>
+                        </div>
+                        <div class="risk-card">
+                            <h4>Vendor Collusion</h4>
+                            <p>What if Amazon's payment address changes? Requires 67% vote + 7-day delay to update.</p>
+                        </div>
+                        <div class="risk-card">
+                            <h4>Charity Resells Products</h4>
+                            <p>A charity could sell donated goods for cash. Community can vote to remove bad actors.</p>
+                        </div>
+                        <div class="risk-card">
+                            <h4>Stablecoin Depeg</h4>
+                            <p>USDC could lose its $1 peg. We use the most regulated, audited stablecoin available.</p>
+                        </div>
+                        <div class="risk-card">
+                            <h4>Voting Manipulation</h4>
+                            <p>Coordinated groups could sway votes. Quadratic voting limits whale power.</p>
+                        </div>
+                        <div class="risk-card">
+                            <h4>Regulatory Shutdown</h4>
+                            <p>Governments could ban crypto. We comply with laws and maintain transparency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>♾️ Self-Sustaining Design</h2>
+                    <div class="about-card">
+                        <p><strong>Once launched, this runs forever without any human.</strong></p>
+                        <ul>
+                            <li>2% of contributions fund operations (hosting, gas fees)</li>
+                            <li>Smart contracts handle 99% of everything automatically</li>
+                            <li>Community votes on the remaining 1% edge cases</li>
+                            <li>No founders, no staff, no overhead</li>
+                        </ul>
+                        <p>The goal: start it, walk away, and it changes the world on its own.</p>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>📖 Full Transparency</h2>
+                    <div class="transparency-list">
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>All treasury transactions public on blockchain</span>
+                        </div>
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>All proposals and votes visible to everyone</span>
+                        </div>
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>All package tracking numbers published</span>
+                        </div>
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>Smart contract code open source on GitHub</span>
+                        </div>
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>Professional security audits published</span>
+                        </div>
+                        <div class="transparency-item">
+                            <span class="check">✓</span>
+                            <span>This page — we tell you the risks, not just the benefits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TREASURY TAB -->
+        <div class="tab-content" id="tab-treasury">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>💰 Treasury</h1>
+                    <p>Real-time view of the community pool. Every transaction is public.</p>
+                </div>
+                <div class="treasury-grid">
+                    <div class="treasury-main">
+                        <div class="section-badge">Live Balance</div>
+                        <h2 class="treasury-balance-large">$127,450.00</h2>
+                        <p class="treasury-subtitle">USDC on Base • Updated every block</p>
+                        <div class="treasury-breakdown">
+                            <div class="breakdown-item"><span>Available for Proposals</span><span
+                                    class="positive">$98,200</span></div>
+                            <div class="breakdown-item"><span>Locked in Active Votes</span><span
+                                    class="warning">$24,500</span></div>
+                            <div class="breakdown-item"><span>Pending Execution</span><span>$4,750</span></div>
+                        </div>
+                        <div class="treasury-actions">
+                            <button class="btn btn-primary btn-large">Contribute Now</button>
+                            <button class="btn btn-secondary">View on Basescan</button>
+                        </div>
+                    </div>
+                    <div class="treasury-activity">
+                        <h3>Recent Transactions</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <span class="activity-icon incoming">↓</span>
+                                <div class="activity-details">
+                                    <span class="activity-action">Contribution</span>
+                                    <span class="activity-address">0x7a3...f42d</span>
+                                </div>
+                                <span class="positive">+$500.00</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon outgoing">↑</span>
+                                <div class="activity-details">
+                                    <span class="activity-action">Proposal #23 Executed</span>
+                                    <span class="activity-address">Winter coats → YouthCare</span>
+                                </div>
+                                <span class="negative">-$4,200.00</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon incoming">↓</span>
+                                <div class="activity-details">
+                                    <span class="activity-action">Contribution</span>
+                                    <span class="activity-address">0x9c1...82ab</span>
+                                </div>
+                                <span class="positive">+$100.00</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon incoming">↓</span>
+                                <div class="activity-details">
+                                    <span class="activity-action">Contribution</span>
+                                    <span class="activity-address">0x2f8...e91c</span>
+                                </div>
+                                <span class="positive">+$1,000.00</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon outgoing">↑</span>
+                                <div class="activity-details">
+                                    <span class="activity-action">Proposal #22 Executed</span>
+                                    <span class="activity-address">Hygiene kits → DESC</span>
+                                </div>
+                                <span class="negative">-$1,800.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROPOSALS TAB -->
+        <div class="tab-content" id="tab-proposals">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <div class="tab-header-row">
+                        <div>
+                            <h1>🗳️ Proposals</h1>
+                            <p>Vote on how treasury funds should be spent.</p>
+                        </div>
+                        <button class="btn btn-primary btn-large" onclick="openProposalModal()">
+                            <span>+ Create Proposal</span>
+                        </button>
+                    </div>
+                    <div class="proposal-filters">
+                        <button class="filter-btn active">All</button>
+                        <button class="filter-btn">Voting</button>
+                        <button class="filter-btn">Executing</button>
+                        <button class="filter-btn">Completed</button>
+                    </div>
+                </div>
+                <div class="proposals-grid" id="proposals-list"></div>
+            </div>
+        </div>
+
+        <!-- RECIPIENTS TAB -->
+        <div class="tab-content" id="tab-recipients">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <div class="tab-header-row">
+                        <div>
+                            <h1>✅ Verified Recipients</h1>
+                            <p>Community-vetted organizations that actually help people.</p>
+                        </div>
+                        <button class="btn btn-secondary btn-large">
+                            <span>+ Nominate Charity</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="recipients-grid" id="recipients-list"></div>
+            </div>
+        </div>
+
+        <!-- ACTIVITY LOG TAB -->
+        <div class="tab-content" id="tab-log">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <div class="tab-header-row">
+                        <div>
+                            <h1>📜 Activity Log</h1>
+                            <p>Complete transparency. Every action, every transaction, every delivery.</p>
+                        </div>
+                        <div class="export-options">
+                            <button class="btn btn-secondary" onclick="exportData('csv')">
+                                📊 Export CSV
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportData('json')">
+                                📁 Export JSON
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-filters">
+                    <button class="filter-btn active">All Activity</button>
+                    <button class="filter-btn">Donations</button>
+                    <button class="filter-btn">Proposals</button>
+                    <button class="filter-btn">Executions</button>
+                    <button class="filter-btn">Deliveries</button>
+                </div>
+
+                <div class="activity-log">
+                    <!-- Delivery Confirmed -->
+                    <div class="log-entry delivery">
+                        <div class="log-icon">📦</div>
+                        <div class="log-content">
+                            <div class="log-title">Delivery Confirmed - Proposal #23</div>
+                            <div class="log-details">200 winter coats delivered to YouthCare Seattle</div>
+                            <div class="log-meta">
+                                <span class="log-time">2 hours ago</span>
+                                <span class="log-status confirmed">✓ Confirmed with photo</span>
+                            </div>
+                            <a href="#" class="log-link">View delivery photo →</a>
+                        </div>
+                        <div class="log-amount">$8,200</div>
+                    </div>
+
+                    <!-- Execution Started -->
+                    <div class="log-entry execution">
+                        <div class="log-icon">⚡</div>
+                        <div class="log-content">
+                            <div class="log-title">Order Placed - Proposal #24</div>
+                            <div class="log-details">500 emergency blankets ordered from Amazon</div>
+                            <div class="log-meta">
+                                <span class="log-time">5 hours ago</span>
+                                <span class="log-status pending">Shipping...</span>
+                            </div>
+                            <a href="#" class="log-link">Track package: 1Z999AA10123456785 →</a>
+                        </div>
+                        <div class="log-amount">$3,750</div>
+                    </div>
+
+                    <!-- Proposal Passed -->
+                    <div class="log-entry proposal passed">
+                        <div class="log-icon">✅</div>
+                        <div class="log-content">
+                            <div class="log-title">Proposal #24 Passed</div>
+                            <div class="log-details">Emergency Blankets for Seattle Homeless Shelters</div>
+                            <div class="log-meta">
+                                <span class="log-time">8 hours ago</span>
+                                <span class="log-status">73% Yes (892 votes)</span>
+                            </div>
+                        </div>
+                        <div class="log-amount">$3,750</div>
+                    </div>
+
+                    <!-- Proposal Rejected -->
+                    <div class="log-entry proposal rejected">
+                        <div class="log-icon">❌</div>
+                        <div class="log-content">
+                            <div class="log-title">Proposal #21 Rejected</div>
+                            <div class="log-details">Office supplies for unverified org</div>
+                            <div class="log-meta">
+                                <span class="log-time">1 day ago</span>
+                                <span class="log-status rejected">32% Yes - Failed</span>
+                            </div>
+                        </div>
+                        <div class="log-amount">$500</div>
+                    </div>
+
+                    <!-- Donation -->
+                    <div class="log-entry donation">
+                        <div class="log-icon">💚</div>
+                        <div class="log-content">
+                            <div class="log-title">New Contribution</div>
+                            <div class="log-details">0x7a3...f42d contributed to the treasury</div>
+                            <div class="log-meta">
+                                <span class="log-time">1 day ago</span>
+                                <a href="#" class="log-link">View on Basescan →</a>
+                            </div>
+                        </div>
+                        <div class="log-amount positive">+$500</div>
+                    </div>
+
+                    <!-- Donation -->
+                    <div class="log-entry donation">
+                        <div class="log-icon">💚</div>
+                        <div class="log-content">
+                            <div class="log-title">New Contribution</div>
+                            <div class="log-details">0x9c1...82ab contributed to the treasury</div>
+                            <div class="log-meta">
+                                <span class="log-time">2 days ago</span>
+                                <a href="#" class="log-link">View on Basescan →</a>
+                            </div>
+                        </div>
+                        <div class="log-amount positive">+$1,000</div>
+                    </div>
+
+                    <!-- Delivery Confirmed -->
+                    <div class="log-entry delivery">
+                        <div class="log-icon">📦</div>
+                        <div class="log-content">
+                            <div class="log-title">Delivery Confirmed - Proposal #22</div>
+                            <div class="log-details">300 hygiene kits delivered to DESC Seattle</div>
+                            <div class="log-meta">
+                                <span class="log-time">3 days ago</span>
+                                <span class="log-status confirmed">✓ Confirmed with photo</span>
+                            </div>
+                            <a href="#" class="log-link">View delivery photo →</a>
+                        </div>
+                        <div class="log-amount">$1,800</div>
+                    </div>
+
+                    <!-- Proposal Passed -->
+                    <div class="log-entry proposal passed">
+                        <div class="log-icon">✅</div>
+                        <div class="log-content">
+                            <div class="log-title">Proposal #22 Passed</div>
+                            <div class="log-details">Hygiene Kits for DESC Seattle</div>
+                            <div class="log-meta">
+                                <span class="log-time">5 days ago</span>
+                                <span class="log-status">89% Yes (1,024 votes)</span>
+                            </div>
+                        </div>
+                        <div class="log-amount">$1,800</div>
+                    </div>
+                </div>
+
+                <div class="log-summary">
+                    <div class="summary-card">
+                        <div class="summary-label">Total Donated</div>
+                        <div class="summary-value positive">$127,450</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Proposals Passed</div>
+                        <div class="summary-value">47</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Proposals Rejected</div>
+                        <div class="summary-value">12</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Deliveries Confirmed</div>
+                        <div class="summary-value">43</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMUNITY TAB -->
+        <div class="tab-content" id="tab-community">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>💬 Community</h1>
+                    <p>Connect with 1,247 verified contributors.</p>
+                </div>
+                <div class="community-grid">
+                    <div class="community-sidebar">
+                        <div class="member-stats">
+                            <div class="member-stat">
+                                <span class="stat-number">1,247</span>
+                                <span class="stat-label">Total Members</span>
+                            </div>
+                            <div class="member-stat">
+                                <span class="stat-number online">42</span>
+                                <span class="stat-label">Online Now</span>
+                            </div>
+                        </div>
+                        <div class="channel-list">
+                            <h4>Channels</h4>
+                            <div class="channel active"># general</div>
+                            <div class="channel"># proposals</div>
+                            <div class="channel"># recipients</div>
+                            <div class="channel"># introductions</div>
+                        </div>
+                    </div>
+                    <div class="chat-main">
+                        <div class="chat-header-full">
+                            <span class="channel-name"># general</span>
+                            <span class="channel-desc">Community discussion</span>
+                        </div>
+                        <div class="chat-messages-full" id="chat-messages"></div>
+                        <div class="chat-input-full">
+                            <input type="text" placeholder="Connect wallet to chat...">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Create Proposal Modal -->
+    <div class="modal" id="proposal-modal">
+        <div class="modal-overlay" onclick="closeProposalModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📝 Create New Proposal</h2>
+                <button class="modal-close" onclick="closeProposalModal()">×</button>
+            </div>
+            <form id="proposal-form" onsubmit="submitProposal(event)">
+                <div class="form-group">
+                    <label>Proposal Title</label>
+                    <input type="text" placeholder="e.g., Winter coats for homeless shelter" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea placeholder="Describe what you want to purchase and why it's needed..."
+                        required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount (USDC)</label>
+                        <input type="number" placeholder="0.00" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" placeholder="e.g., 200" min="1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Recipient</label>
+                        <select required>
+                            <option value="">Select verified recipient...</option>
+                            <option value="ballard">Ballard Food Bank ✓</option>
+                            <option value="desc">DESC Seattle ✓</option>
+                            <option value="youthcare">YouthCare ✓</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Vendor</label>
+                        <select required>
+                            <option value="">Select vendor...</option>
+                            <option value="amazon">Amazon</option>
+                            <option value="walmart">Walmart</option>
+                            <option value="costco">Costco</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Product Link (optional)</label>
+                    <input type="url" placeholder="https://amazon.com/...">
+                </div>
+                <div class="form-info">
+                    <div class="info-icon">ℹ️</div>
+                    <div class="info-text">
+                        <strong>Proposal Stake:</strong> 10 USDC (refunded if proposal passes or after 30 days)
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeProposalModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-large">Submit Proposal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
