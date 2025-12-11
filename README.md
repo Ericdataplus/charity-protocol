@@ -1,5 +1,7 @@
 # Charity Protocol 💚
 
+### 🌐 **[View Live Demo →](https://ericdataplus.github.io/charity-protocol/)**
+
 > **Transparent Giving That Actually Helps People**
 
 A community-driven platform where contributors pool funds, vote on what to buy, and watch goods ship directly to verified charities — with zero middlemen, zero waste, and **no cash to anyone**.
