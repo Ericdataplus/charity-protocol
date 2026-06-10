@@ -96,7 +96,7 @@ body {
    ============================================ */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 36px; /* Offset for demo banner */
     left: 0;
     right: 0;
     z-index: 1000;
@@ -574,4 +574,60 @@ section {
 
 .negative {
     color: var(--error);
+}
+
+/* ============================================
+   Demo Honesty Layer
+   ============================================ */
+
+.demo-banner {
+    background: #ef4444;
+    color: white;
+    text-align: center;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.demo-banner-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.simulated-badge {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    margin-left: var(--space-xs);
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+}
+
+.tracking-link-disabled {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    background: var(--bg-tertiary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
 }

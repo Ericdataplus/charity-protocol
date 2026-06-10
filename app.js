@@ -2,14 +2,14 @@
 // OpenCharity - Interactive Demo Application
 // ============================================
 
-// Sample Data
+// Sample Data (Simulated for Demo)
 const proposals = [
     {
         id: 24,
-        title: "Emergency Blankets for Seattle Homeless Shelters",
-        description: "Purchase 500 emergency thermal blankets via Amazon and ship directly to DESC (Downtown Emergency Service Center).",
+        title: "Emergency Blankets for Harbor Light Shelter (example)",
+        description: "Purchase 500 emergency thermal blankets via Amazon and ship directly to Harbor Light Shelter.",
         amount: 3750,
-        recipient: "DESC Seattle",
+        recipient: "Harbor Light Shelter",
         vendor: "Amazon",
         yesVotes: 892,
         noVotes: 329,
@@ -18,10 +18,10 @@ const proposals = [
     },
     {
         id: 25,
-        title: "Hygiene Kits for Ballard Food Bank",
+        title: "Hygiene Kits for Evergreen Community Food Bank (example)",
         description: "Order 300 complete hygiene kits (soap, shampoo, toothbrush, toothpaste, deodorant) from Walmart.",
         amount: 2400,
-        recipient: "Ballard Food Bank",
+        recipient: "Evergreen Food Bank",
         vendor: "Walmart",
         yesVotes: 1024,
         noVotes: 127,
@@ -31,19 +31,19 @@ const proposals = [
     {
         id: 23,
         title: "Winter Coats for Homeless Youth",
-        description: "200 Columbia winter coats shipped to YouthCare Seattle for homeless youth ages 12-24.",
+        description: "200 Columbia winter coats shipped to City YouthCare (example) for homeless youth ages 12-24.",
         amount: 8200,
-        recipient: "YouthCare Seattle",
+        recipient: "City YouthCare",
         vendor: "Amazon",
         status: "executing",
-        trackingNumber: "1Z999AA10123456784",
+        trackingNumber: "SIMULATED_TRACKING_1Z9",
         executionStep: 3
     }
 ];
 
 const recipients = [
     {
-        name: "Ballard Food Bank",
+        name: "Evergreen Food Bank (example)",
         location: "Seattle, WA",
         description: "Community food bank providing groceries, meals, and support services to neighbors in need.",
         received: 12400,
@@ -52,16 +52,16 @@ const recipients = [
         verified: true
     },
     {
-        name: "DESC Seattle",
+        name: "Harbor Light Shelter (example)",
         location: "Seattle, WA",
-        description: "Downtown Emergency Service Center - housing and services for homeless individuals.",
+        description: "Emergency shelter - housing and services for homeless individuals.",
         received: 8750,
         deliveries: 5,
         approval: 96,
         verified: true
     },
     {
-        name: "YouthCare",
+        name: "City YouthCare (example)",
         location: "Seattle, WA",
         description: "Ending youth homelessness through housing, education, and employment services.",
         received: 15200,
@@ -70,7 +70,7 @@ const recipients = [
         verified: true
     },
     {
-        name: "Mary's Place",
+        name: "SafeHaven Family Shelter (example)",
         location: "Seattle, WA",
         description: "Emergency family shelter providing safe housing for families with children.",
         verified: false,
@@ -82,11 +82,11 @@ const recipients = [
 // Chat messages organized by channel
 const channelMessages = {
     'general': [
-        { user: "sarah.eth", text: "Just voted yes on the blanket proposal! Really glad we're helping DESC 🙏", time: "2m ago", avatar: "🌻" },
+        { user: "sarah.eth", text: "Just voted yes on the blanket proposal! Really glad we're helping Harbor Light 🙏", time: "2m ago", avatar: "🌻" },
         { user: "mike_contributor", text: "This community is incredible. Never thought I'd see charity work like this.", time: "8m ago", avatar: "🔵" },
         { user: "jenny_seattle", text: "Good morning everyone! Any exciting proposals today?", time: "15m ago", avatar: "💜" },
         { user: "transparencyFan", text: "I just exported the data and verified everything. This is the future of giving! 🤯", time: "22m ago", avatar: "🔍" },
-        { user: "charity_volunteer", text: "I work at Ballard Food Bank - we received the supplies last week! Thank you all 🙏", time: "45m ago", avatar: "💚" },
+        { user: "charity_volunteer", text: "I work at Evergreen Food Bank - we received the supplies last week! Thank you all 🙏", time: "45m ago", avatar: "💚" },
         { user: "anon_giver", text: "Donated my first $50 today. Feels good knowing exactly where it goes.", time: "1h ago", avatar: "⭐" }
     ],
     'proposals': [
@@ -98,21 +98,21 @@ const channelMessages = {
         { user: "data_analyst", text: "Running the numbers on #24... cost per blanket is $7.50, that's 30% below market. Solid proposal.", time: "45m ago", avatar: "📊" }
     ],
     'recipients': [
-        { user: "opencharity_bot", text: "🏛️ New charity application: Seattle Children's Hospital Foundation", time: "3h ago", avatar: "🤖", isBot: true },
-        { user: "charity_verifier", text: "I verified Ballard Food Bank in person. They're legit - toured the facility. Voting YES.", time: "5h ago", avatar: "✅" },
-        { user: "jenny_seattle", text: "Has anyone had direct contact with DESC Seattle? Their impact reports look amazing.", time: "8h ago", avatar: "💜" },
-        { user: "desc_outreach", text: "@jenny_seattle I'm from DESC! Happy to answer any questions about our work.", time: "8h ago", avatar: "💙" },
+        { user: "opencharity_bot", text: "🏛️ New charity application: Children's Health Foundation (example)", time: "3h ago", avatar: "🤖", isBot: true },
+        { user: "charity_verifier", text: "I verified Evergreen Food Bank in person. They're legit - toured the facility. Voting YES.", time: "5h ago", avatar: "✅" },
+        { user: "jenny_seattle", text: "Has anyone had direct contact with Harbor Light Shelter? Their impact reports look amazing.", time: "8h ago", avatar: "💜" },
+        { user: "shelter_outreach", text: "@jenny_seattle I'm from Harbor Light! Happy to answer any questions about our work.", time: "8h ago", avatar: "💙" },
         { user: "skeptic_sam", text: "How do we know charities won't resell the goods we send them?", time: "1d ago", avatar: "🤔" },
         { user: "sarah.eth", text: "@skeptic_sam We require delivery photo confirmation + they're on probation for first 3 deliveries", time: "1d ago", avatar: "🌻" },
         { user: "foodbank_director", text: "We love this model! So much more efficient than traditional donation processing.", time: "2d ago", avatar: "🍎" }
     ],
     'introductions': [
-        { user: "new_contributor", text: "Hi everyone! 👋 I'm Alex from Portland. Heard about OpenCharity on Twitter. Excited to be here!", time: "10m ago", avatar: "🌟" },
+        { user: "new_contributor", text: "Hi everyone! 👋 I'm Alex from Portland. Heard about Charity Protocol on Twitter. Excited to be here!", time: "10m ago", avatar: "🌟" },
         { user: "jenny_seattle", text: "@new_contributor Welcome Alex! Check out the About tab to learn how it all works.", time: "12m ago", avatar: "💜" },
         { user: "crypto_philanthropy", text: "Hey all! I run a small crypto education nonprofit. Love what you're building here.", time: "2h ago", avatar: "📚" },
         { user: "anon_giver", text: "Just a regular person who wants to help. Contributed $100. Hoping to make a difference.", time: "5h ago", avatar: "⭐" },
         { user: "sarah.eth", text: "@anon_giver Every contribution counts! Welcome to the community 💚", time: "5h ago", avatar: "🌻" },
-        { user: "local_volunteer", text: "I volunteer at Mary's Place. Would love to help get them verified on OpenCharity!", time: "1d ago", avatar: "🏠" },
+        { user: "local_volunteer", text: "I volunteer at SafeHaven. Would love to help get them verified on Charity Protocol!", time: "1d ago", avatar: "🏠" },
         { user: "tech_builder", text: "Software engineer here. Love the transparency. Happy to help review the smart contracts.", time: "2d ago", avatar: "💻" },
         { user: "mike_contributor", text: "Welcome everyone! This community grows every day. So glad you're all here!", time: "2d ago", avatar: "🔵" }
     ]
@@ -162,7 +162,7 @@ function renderProposals() {
                         <div class="execution-step active"><span class="step-spinner"></span><span>Order Placed - Shipping</span></div>
                         <div class="execution-step pending"><span class="step-pending">○</span><span>Delivery Confirmation</span></div>
                     </div>
-                    <a href="#" class="tracking-link">📦 Track Package: ${p.trackingNumber}</a>
+                    <span class="tracking-link-disabled">📦 Tracking simulated for privacy: ${p.trackingNumber}</span>
                 </div>
             `;
         }
@@ -542,13 +542,13 @@ function exportData(format) {
         proposals: proposals,
         recipients: recipients,
         activityLog: [
-            { type: 'delivery', date: '2024-12-10T20:00:00Z', proposal: 23, description: '200 winter coats delivered to YouthCare Seattle', amount: 8200, status: 'confirmed' },
-            { type: 'execution', date: '2024-12-10T17:00:00Z', proposal: 24, description: '500 emergency blankets ordered from Amazon', amount: 3750, tracking: '1Z999AA10123456785', status: 'shipping' },
+            { type: 'delivery', date: '2024-12-10T20:00:00Z', proposal: 23, description: '200 winter coats delivered to City YouthCare', amount: 8200, status: 'confirmed' },
+            { type: 'execution', date: '2024-12-10T17:00:00Z', proposal: 24, description: '500 emergency blankets ordered from Amazon', amount: 3750, tracking: 'SIMULATED', status: 'shipping' },
             { type: 'vote', date: '2024-12-10T14:00:00Z', proposal: 24, description: 'Emergency Blankets for Seattle Homeless Shelters', result: 'passed', yesPercent: 73, totalVotes: 1221 },
             { type: 'vote', date: '2024-12-09T12:00:00Z', proposal: 21, description: 'Office supplies for unverified org', result: 'rejected', yesPercent: 32, totalVotes: 450 },
             { type: 'donation', date: '2024-12-09T10:00:00Z', wallet: '0x7a3...f42d', amount: 500 },
             { type: 'donation', date: '2024-12-08T14:00:00Z', wallet: '0x9c1...82ab', amount: 1000 },
-            { type: 'delivery', date: '2024-12-07T16:00:00Z', proposal: 22, description: '300 hygiene kits delivered to DESC Seattle', amount: 1800, status: 'confirmed' }
+            { type: 'delivery', date: '2024-12-07T16:00:00Z', proposal: 22, description: '300 hygiene kits delivered to Harbor Light Shelter', amount: 1800, status: 'confirmed' }
         ],
         stats: {
             totalDonated: 127450,

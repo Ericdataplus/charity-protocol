@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Protocol - Trustless Community Giving</title>
+    <title>Charity Protocol - Concept Demo</title>
     <meta name="description"
-        content="A transparent, community-driven platform where your contributions directly help people.">
+        content="A transparent, trust-minimized platform concept where your contributions directly help people.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -15,6 +15,11 @@
 </head>
 
 <body>
+    <!-- Persistent Demo Banner -->
+    <div class="demo-banner" id="demo-banner">
+        <strong>⚠️ CONCEPT DEMO:</strong> This is an interactive mockup with simulated data. Nothing is live and no real funds are held.
+        <button class="demo-banner-close" onclick="document.getElementById('demo-banner').style.display='none'">×</button>
+    </div>
     <!-- Fixed Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -35,12 +40,15 @@
                         <button class="dropdown-item" data-tab="recipients">🏛️ Approved Charities</button>
                         <button class="dropdown-item" data-tab="log">📜 Activity Log</button>
                         <button class="dropdown-item" data-tab="community">💬 Community</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" data-tab="roadmap">🗺️ Roadmap</button>
+                        <button class="dropdown-item" data-tab="faq">❓ FAQ & Risks</button>
+                        <button class="dropdown-item" data-tab="whitepaper">📄 Whitepaper</button>
                     </div>
                 </div>
             </div>
             <div class="nav-actions">
-                <button class="btn btn-secondary">Connect Wallet</button>
-                <button class="btn btn-primary">Contribute</button>
+                <button class="btn btn-secondary" onclick="showTab('waitlist')">Join Waitlist</button>
             </div>
         </div>
     </nav>
@@ -53,32 +61,30 @@
             <section class="hero">
                 <div class="hero-bg"></div>
                 <div class="hero-content">
-                    <div class="hero-badge"><span class="badge-dot"></span>100% Transparent • 0% Waste</div>
-                    <h1 class="hero-title">Voluntary Taxes That<br><span class="gradient-text">Actually Help
-                            People</span></h1>
-                    <p class="hero-subtitle">Contribute to a transparent pool. Vote on how it's spent. Watch goods ship
-                        directly to verified charities.</p>
+                    <div class="hero-badge"><span class="badge-dot"></span>Trust-minimized • 98% to goods, 2% ops</div>
+                    <h1 class="hero-title">Pool donations. <span class="gradient-text">Vote on exactly what to buy.</span> Watch the goods arrive.</h1>
+                    <p class="hero-subtitle">Every dollar, vote, receipt, and tracking number — public.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary btn-large" onclick="showTab('treasury')">View Treasury →</button>
-                        <button class="btn btn-ghost btn-large" onclick="showTab('proposals')">See Proposals</button>
+                        <button class="btn btn-primary btn-large" onclick="showTab('treasury')">View Simulated Treasury →</button>
+                        <button class="btn btn-ghost btn-large" onclick="showTab('proposals')">See Example Proposals</button>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-card" onclick="showTab('treasury')">
-                            <div class="stat-label">Treasury Balance</div>
+                            <div class="stat-label">Treasury Balance <span class="simulated-badge">SIMULATED</span></div>
                             <div class="stat-value" id="treasury-balance">$127,450</div>
                             <div class="stat-badge positive">+$2,340 today</div>
                         </div>
                         <div class="stat-card" onclick="showTab('community')">
-                            <div class="stat-label">Contributors</div>
+                            <div class="stat-label">Contributors <span class="simulated-badge">SIMULATED</span></div>
                             <div class="stat-value">1,247</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">Goods Delivered</div>
+                            <div class="stat-label">Goods Delivered <span class="simulated-badge">SIMULATED</span></div>
                             <div class="stat-value">$89,200</div>
                             <div class="stat-badge positive">100% verified</div>
                         </div>
                         <div class="stat-card" onclick="showTab('proposals')">
-                            <div class="stat-label">Active Proposals</div>
+                            <div class="stat-label">Active Proposals <span class="simulated-badge">SIMULATED</span></div>
                             <div class="stat-value">7</div>
                         </div>
                     </div>
@@ -116,8 +122,8 @@
                         <div class="step-card">
                             <div class="step-number">04</div>
                             <div class="step-icon">📦</div>
-                            <h3>Auto-Execute</h3>
-                            <p>Smart contract → Amazon API → Goods shipped directly.</p>
+                            <h3>Confirmation-Gated Executor</h3>
+                            <p>Executor buys goods via Amazon Business → Receipt & Tracking published → Charity confirms → Executor reimbursed.</p>
                         </div>
                     </div>
                 </div>
@@ -125,8 +131,8 @@
 
             <section class="voting-explainer">
                 <div class="container">
-                    <h2>Why Your Voice Matters (Even If You're Not Rich)</h2>
-                    <p>Quadratic voting prevents plutocracy. Votes = √(Contribution)</p>
+                    <h2>Why Your Voice Matters (Identity-Verified)</h2>
+                    <p>Quadratic voting prevents plutocracy, but applies only to verified humans to prevent Sybil attacks. Votes = √(Lifetime Contribution with 24-month decay)</p>
                     <div class="voting-example">
                         <div>$100 → 10 votes</div>
                         <div>$1,000 → 31 votes <small>(not 100!)</small></div>
@@ -161,74 +167,73 @@
                 </div>
 
                 <div class="about-section">
-                    <h2>🔐 The Money Lockbox</h2>
+                    <h2>🔐 The Trust Model</h2>
                     <div class="about-card">
-                        <p><strong>No one can access the money. Not even the founder.</strong></p>
-                        <p>The treasury is controlled by a smart contract that ONLY allows:</p>
+                        <p><strong>Trust-minimized, radically transparent execution.</strong></p>
+                        <p>We believe in honest architecture. Here is what you MUST trust:</p>
                         <ul>
-                            <li>✅ Money IN from contributors</li>
-                            <li>✅ Money OUT to approved vendors (Amazon, Walmart, etc.)</li>
-                            <li>❌ NO withdrawals to personal wallets</li>
-                            <li>❌ NO founder access</li>
-                            <li>❌ NO emergency backdoors</li>
+                            <li>⚠️ The Executor (until confirmation-gated reimbursement)</li>
+                            <li>⚠️ The Charity's honesty (mitigated by photo proof & audits)</li>
+                            <li>⚠️ USDC stability</li>
+                            <li>⚠️ Third-party auditors</li>
                         </ul>
-                        <p>Once deployed, this is permanent. The code is law.</p>
+                        <p>Here is what you DO NOT have to trust:</p>
+                        <ul>
+                            <li>✅ Founder's promises (On-chain v2 utilizes a 3-of-5 multisig with 48-hour timelock)</li>
+                            <li>✅ Hidden books (The ledger is entirely public)</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="about-section">
-                    <h2>🗳️ Your Rights</h2>
+                    <h2>🗳️ Governance Rules</h2>
                     <div class="about-card">
-                        <p><strong>Once you contribute, you can ALWAYS vote.</strong></p>
-                        <p>Even if you get banned from chat or proposals for bad behavior, your voting rights are
-                            permanent. Your contribution earned you a voice forever.</p>
+                        <p><strong>Governance Parameters:</strong></p>
+                        <ul>
+                            <li>7-day voting window with a 10% quorum.</li>
+                            <li>Simple majority rule (>50%).</li>
+                            <li>48-hour challenge period before execution.</li>
+                            <li>Anti-snipe extension: If the outcome flips in the final hours, voting extends.</li>
+                            <li>Per-proposal spending caps tied to charity trust tiers.</li>
+                            <li>Conflicts of interest must be disclosed.</li>
+                            <li>Voting rights are revocable ONLY by a 75% supermajority governance vote for documented fraud.</li>
+                            <li>Dead-man wind-down: If dormant for 18 months, fallback charities receive remaining funds.</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="about-section">
-                    <h2>📦 Trustless Ways We Help</h2>
-                    <p>We don't just send cash to charities. We use trusted vendors to ensure 100% of funds become real
-                        help:</p>
+                    <h2>📦 Trust-Minimized Allocation</h2>
+                    <p>Phase 1 focuses exclusively on physical goods to verified US 501(c)(3) charities. We use trusted vendors to ensure funds become real help:</p>
                     <div class="allocation-grid">
                         <div class="allocation-card">
                             <div class="allocation-icon">🛒</div>
                             <h3>Product Delivery</h3>
-                            <p>Amazon, Walmart, Costco ship directly to charities. Tracked publicly.</p>
+                            <p>Amazon Business ships directly to charity wishlists. Tracked publicly.</p>
                         </div>
+                        <div class="allocation-card">
+                            <div class="allocation-icon">🐕</div>
+                            <h3>Pet Supplies</h3>
+                            <p>Chewy delivers pet food/supplies to verified animal shelters.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Phase 3 (Deferred pending legal review for AML/Prepaid Access)</h3>
+                    <div class="allocation-grid">
                         <div class="allocation-card">
                             <div class="allocation-icon">🎁</div>
                             <h3>Gift Cards</h3>
-                            <p>Digital gift cards for groceries, essentials sent directly to recipients.</p>
+                            <p>Digital gift cards for groceries, essentials.</p>
                         </div>
                         <div class="allocation-card">
                             <div class="allocation-icon">💊</div>
                             <h3>Medical Bills</h3>
-                            <p>Pay hospital bills directly via payment portals. Proof of payment.</p>
-                        </div>
-                        <div class="allocation-card">
-                            <div class="allocation-icon">🎓</div>
-                            <h3>Scholarships</h3>
-                            <p>Pay tuition directly to verified schools. Student never touches money.</p>
+                            <p>Pay hospital bills directly via payment portals.</p>
                         </div>
                         <div class="allocation-card">
                             <div class="allocation-icon">🏠</div>
                             <h3>Rent/Utilities</h3>
                             <p>Pay landlords/utilities directly via verified payment services.</p>
-                        </div>
-                        <div class="allocation-card">
-                            <div class="allocation-icon">🚌</div>
-                            <h3>Transit Passes</h3>
-                            <p>Purchase bus/transit passes via city transit APIs.</p>
-                        </div>
-                        <div class="allocation-card">
-                            <div class="allocation-icon">🐕</div>
-                            <h3>Pet Supplies</h3>
-                            <p>Chewy delivers pet food/supplies to animal shelters.</p>
-                        </div>
-                        <div class="allocation-card">
-                            <div class="allocation-icon">🍔</div>
-                            <h3>Meal Delivery</h3>
-                            <p>DoorDash/UberEats meals for homeless individuals.</p>
                         </div>
                     </div>
                 </div>
@@ -265,16 +270,16 @@
                 </div>
 
                 <div class="about-section">
-                    <h2>♾️ Self-Sustaining Design</h2>
+                    <h2>♾️ Transparent Operations</h2>
                     <div class="about-card">
-                        <p><strong>Once launched, this runs forever without any human.</strong></p>
+                        <p><strong>Radical transparency over "no humans".</strong></p>
                         <ul>
-                            <li>2% of contributions fund operations (hosting, gas fees)</li>
-                            <li>Smart contracts handle 99% of everything automatically</li>
-                            <li>Community votes on the remaining 1% edge cases</li>
-                            <li>No founders, no staff, no overhead</li>
+                            <li>2% of contributions fund operations (hosting, audits, legal, accounting, insurance).</li>
+                            <li>Financials and operations budgets published monthly (Form 990 is public).</li>
+                            <li>On-chain rules handle the protocol, but a board oversees execution.</li>
+                            <li>Legal Status: Currently in concept stage. Proceeding toward fiscal sponsorship or 501(c)(3).</li>
                         </ul>
-                        <p>The goal: start it, walk away, and it changes the world on its own.</p>
+                        <p>Donations are only tax-deductible once there's a 501(c)(3) or fiscal sponsor in place.</p>
                     </div>
                 </div>
 
@@ -633,7 +638,115 @@
             </div>
         </div>
 
+        <!-- ROADMAP TAB -->
+        <div class="tab-content" id="tab-roadmap">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>🗺️ Roadmap</h1>
+                    <p>Our path from concept to decentralized charity protocol.</p>
+                </div>
+                <div class="roadmap-stages">
+                    <div class="about-section">
+                        <div class="about-card">
+                            <h3>Stage 0: Concept Demo (Current)</h3>
+                            <ul>
+                                <li>Interactive frontend with simulated data.</li>
+                                <li>Gathering community interest and technical feedback.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <div class="about-card">
+                            <h3>Stage 1: Entity Formation</h3>
+                            <ul>
+                                <li>Establishing a Fiscal Sponsorship or an independent 501(c)(3).</li>
+                                <li>Handling money for charity requires strict AML/KYC compliance. We must have a legal entity to prevent the protocol from being classified as an unlicensed money transmitter.</li>
+                                <li>Donations will only be tax-deductible once this entity is established.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <div class="about-card">
+                            <h3>Stage 2: Closed Pilot</h3>
+                            <ul>
+                                <li>Testing the Confirmation-Gated Executor model with 2-3 local charities.</li>
+                                <li>Manual verification and execution.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <div class="about-card">
+                            <h3>Stage 3: Public Crypto Rollout</h3>
+                            <ul>
+                                <li>Opening the treasury to public USDC contributions.</li>
+                                <li>Enforcing Quadratic Voting via decentralized identity.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <div class="about-card">
+                            <h3>Stage 4: On-Chain v2 (DAO)</h3>
+                            <ul>
+                                <li>Transitioning treasury control to a 3-of-5 multisig.</li>
+                                <li>Smart contracts govern the Executor reimbursement flow.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ & RISKS TAB -->
+        <div class="tab-content" id="tab-faq">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>❓ FAQ & Risks</h1>
+                    <p>Honest answers to the hardest questions.</p>
+                </div>
+                <div class="about-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="about-card">
+                        <h3>Are contributions tax-deductible?</h3>
+                        <p>Not yet. In Stage 0 and 1, we do not hold a 501(c)(3) status or fiscal sponsor. Once we secure that legal standing, contributions will become tax-deductible.</p>
+                        <br>
+                        <h3>Why not be fully trustless?</h3>
+                        <p>Because physical delivery of goods requires human confirmation. Smart contracts can't look inside an Amazon box. Instead, we use a Confirmation-Gated Executor model, which minimizes trust but doesn't pretend to eliminate it.</p>
+                        <br>
+                        <h3>What if the Executor runs away with the money?</h3>
+                        <p>The Executor uses their own funds (or a corporate account) to buy the goods. They are only reimbursed by the treasury AFTER the charity confirms receipt. If they act maliciously, they simply aren't reimbursed. The treasury is never at risk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHITEPAPER TAB -->
+        <div class="tab-content" id="tab-whitepaper">
+            <div class="tab-page">
+                <div class="tab-header">
+                    <h1>📄 Whitepaper</h1>
+                    <p>The comprehensive architecture and philosophy of Charity Protocol.</p>
+                </div>
+                <div class="about-section">
+                    <div class="about-card" style="text-align: center; padding: var(--space-3xl);">
+                        <h2>Read the Full Documentation</h2>
+                        <p style="margin-bottom: var(--space-lg);">The complete Charity Protocol whitepaper, including the Confirmation-Gated Executor model, governance mechanics, and legal roadmap is available in our README.</p>
+                        <a href="https://github.com/Ericdataplus/charity-protocol" target="_blank" class="btn btn-primary btn-large">View Whitepaper on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: var(--space-2xl) var(--space-lg); border-top: 1px solid var(--border-subtle); margin-top: var(--space-3xl); color: var(--text-tertiary); font-size: 0.85rem;">
+        <p><strong>Charity Protocol (Concept Demo)</strong></p>
+        <p>This application is an interactive concept. It is not an investment platform, nor a registered charity (yet).</p>
+        <div style="margin-top: var(--space-md); display: flex; justify-content: center; gap: var(--space-md);">
+            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a> | 
+            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+        </div>
+    </footer>
 
     <!-- Create Proposal Modal -->
     <div class="modal" id="proposal-modal">
