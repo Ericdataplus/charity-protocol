@@ -26,14 +26,14 @@ A radically transparent platform where contributors pool funds, vote on what to 
 
 Imagine a world where:
 
-1. **You voluntarily contribute** to a shared charity pool.
+1. **You voluntarily contribute** to a shared charity pool running on **USDC on Base**.
 2. **Everyone can see** exactly how much is in the pool (full transparency).
 3. **The community votes** on what to buy (democratic allocation).
 4. **Verified humans have equal say** (quadratic voting with Sybil resistance).
 5. **Money ONLY goes to products** — never cash to anyone.
 6. **Execution is transparent** — every tracking number and receipt is public.
 
-This is **Charity Protocol**: a concept for trust-minimized, radically transparent giving.
+This is **Charity Protocol**: not a company or an investment, but rather a blueprint combining existing pieces (crypto rails, identity verification, logistics) into a trust-minimized, radically transparent giving tool.
 
 ---
 
@@ -54,13 +54,18 @@ Let's be absolutely clear:
 
 This is for people with kind hearts who want real change in the world. Your return is knowing you helped someone.
 
+### Why No AI Governance?
+
+We deliberately choose **not** to use AI as a governance mechanism or decision-maker. While AI can draft code and summarize data, human empathy, local context, and community consensus are strictly required to decide *who* gets help and *what* they need. The community votes; the protocol executes. No black boxes.
+
 ---
 
 ## 🔥 Core Problems We Solve
 
 ### Problem 1: Traditional Charity Waste
 **Our Solution**: **Goods, not cash.** Instead of giving money to a charity, we:
-- Vote to buy **specific goods** (e.g., 200 winter coats).
+- Maintain a **verified recipient registry** with a strict vetting process.
+- Vote to buy **specific goods** (e.g., 200 winter coats) for those approved recipients.
 - An executor orders directly from **Amazon/Walmart**.
 - Ship directly to the **verified charity's address**.
 - Track the package **publicly**.
@@ -71,7 +76,7 @@ This is for people with kind hearts who want real change in the world. Your retu
 **Our Solution**: **Identity-Verified Quadratic Voting.**
 Formula: `Votes = √(Lifetime Contribution with 24-month decay)`
 
-A billionaire can't buy control. By restricting voting to verified humans (using tools like Persona or WorldID), we prevent Sybil attacks where one person creates many wallets.
+A billionaire can't buy control. By restricting voting to verified humans, we prevent Sybil attacks where one person creates many wallets. We utilize anti-Sybil protections like proof of humanity (e.g., Persona/WorldID) alongside social vouching to ensure every voter is a unique, living person.
 
 ---
 
